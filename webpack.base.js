@@ -26,7 +26,7 @@ module.exports = {
         include: [pathResolve('src')]
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(jsx?)$/,
         use: 'babel-loader',
         exclude: /node_modules/
       },
@@ -79,15 +79,38 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpg|jpeg|svg|gif)$/,
+        test: /\.(gif|png|jpe?g|svg)$/,
         use: [{
-          loader: 'url-loader',
-          options: {
-            limit: 8192,
-            name: '[name].[hash:7].[ext]',
-            outputPath: 'static/img'
-          }
-        }]
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              name: '[name].[hash:7].[ext]',
+              outputPath: 'static/img'
+            }
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65
+              },
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              webp: {
+                quality: 75
+              }
+            }
+          },
+        ]
       }
     ]
   },
