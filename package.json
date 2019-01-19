@@ -4,7 +4,7 @@
   "description": "A Quick, Simple and Easy-to-Use Front-end Development Efficiency Improvement Tool",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.dev.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.dev.js --open",
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js "
   },
   "keywords": [
