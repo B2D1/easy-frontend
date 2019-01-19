@@ -1,0 +1,1 @@
+我会被复制到dist/static/assets文件夹中

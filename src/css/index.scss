@@ -1,0 +1,17 @@
+$link-color: #ff4040;
+
+h1 {
+  color: $link_color;
+}
+
+.useless {
+  color: $link_color;
+}
+
+.img {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin-top: 20px;
+  border-radius: 50%;
+}
