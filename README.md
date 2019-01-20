@@ -26,3 +26,4 @@ npm run dev
 ```
 npm run build
 ```
+**如想忽略ESLint的检查，只需在要忽略的文件头部添加`/* eslint-disable */`**
