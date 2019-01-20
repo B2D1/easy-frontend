@@ -11,7 +11,6 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 
 const pathResolve = (targetPath) => path.resolve(__dirname, targetPath);
 
-
 module.exports = smart(base, {
   mode: 'production',
   devtool: 'source-map',
