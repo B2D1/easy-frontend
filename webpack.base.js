@@ -14,7 +14,8 @@ module.exports = {
     path: pathResolve('dist'),
   },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.js$/,
         use: {
           loader: 'eslint-loader',
@@ -35,32 +36,34 @@ module.exports = {
         use: {
           loader: 'html-loader',
           options: {
-            attrs: ['img:src', 'link:href']
+            attrs: ['img:src', 'link:href'],
           },
         },
       },
       {
         test: /\.(eot|woff|woff2|ttf)$/,
-        use: [{
-          loader: 'url-loader',
-          options: {
-            name: '[name].[hash:7].[ext]',
-            limit: 8192,
-            outputPath: 'static/font',
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              name: '[name].[hash:7].[ext]',
+              limit: 8192,
+              outputPath: 'static/font',
+            },
           },
-        }, ],
+        ],
       },
       {
         test: /\.less$/,
         use: [
-          devMode ?
-          'style-loader' :
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: '../../',
-            },
-          },
+          devMode
+            ? 'style-loader'
+            : {
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                  publicPath: '../../',
+                },
+              },
           'css-loader',
           'postcss-loader',
           'less-loader',
@@ -69,22 +72,28 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          devMode ?
-          'style-loader' :
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: '../../',
-            },
-          },
+          devMode
+            ? 'style-loader'
+            : {
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                  publicPath: '../../',
+                },
+              },
           'css-loader',
           'postcss-loader',
-          'sass-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              outputStyle: 'expanded',
+            },
+          },
         ],
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/,
-        use: [{
+        use: [
+          {
             loader: 'url-loader',
             options: {
               limit: 8192,
